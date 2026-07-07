@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ namespace Project.Game
         [SerializeField] private int _score = 30;
 
         private int _scoreValue;
+
+        public event Action<int> OnScoreChanged;
 
         private void Awake()
         {
@@ -41,6 +44,7 @@ namespace Project.Game
         private void UpdateTextScore()
         {
             _textScore.SetText($"${_scoreValue.ToString()}");
+            OnScoreChanged?.Invoke(_scoreValue);
         }
     }
 }
