@@ -14,7 +14,7 @@ namespace Project.Game
 
         private int _scoreValue;
 
-        public event Action<int> OnScoreChanged;
+        public event Action<int> ScoreChanged;
 
         private void Awake()
         {
@@ -33,18 +33,19 @@ namespace Project.Game
         {
             _scoreValue += _score;
             UpdateTextScore();
+            ScoreChanged?.Invoke(_scoreValue);
         }
 
         private void ResetScore()
         {
             _scoreValue = 0;
             UpdateTextScore();
+            ScoreChanged?.Invoke(_scoreValue);
         }
 
         private void UpdateTextScore()
         {
             _textScore.SetText($"${_scoreValue.ToString()}");
-            OnScoreChanged?.Invoke(_scoreValue);
         }
     }
 }
