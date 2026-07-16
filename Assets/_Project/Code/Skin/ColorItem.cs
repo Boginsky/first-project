@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace Project.Code
 {
-    public class ColorItem : MonoBehaviour
+    [System.Serializable]
+    public struct ColorItem
     {
         public Color Color;
     }
